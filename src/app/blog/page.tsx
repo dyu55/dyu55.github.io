@@ -1,35 +1,16 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { getAllPosts, getAllTags } from "@/lib/blog";
 
-// Sample blog posts - replace with MDX content later
-const posts = [
-  {
-    slug: "building-production-rag",
-    title: "Building a Production RAG System",
-    date: "2026-04-20",
-    excerpt:
-      "Lessons from building a RAG system that handles 10k+ queries per day with 140+ tests.",
-    tags: ["RAG", "AI", "Production"],
-  },
-  {
-    slug: "llm-orchestration-patterns",
-    title: "LLM Orchestration Patterns",
-    date: "2026-04-15",
-    excerpt:
-      "Common patterns for structuring LLM applications: from simple chains to complex agents.",
-    tags: ["LLM", "Architecture"],
-  },
-  {
-    slug: "mcp-deep-dive",
-    title: "MCP Deep Dive",
-    date: "2026-04-10",
-    excerpt:
-      "Understanding the Model Context Protocol and how it enables agent tool use.",
-    tags: ["MCP", "Agents"],
-  },
-];
+export const metadata = {
+  title: "Writing — Michael Yu",
+  description: "Thoughts on AI systems, engineering, and building in public.",
+};
 
 export default function BlogPage() {
+  const posts = getAllPosts();
+  const allTags = getAllTags();
+
   return (
     <main className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -41,6 +22,20 @@ export default function BlogPage() {
             Thoughts on AI systems, engineering, and building in public.
           </p>
         </header>
+
+        {/* Tag filter pills */}
+        {allTags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-8" role="navigation" aria-label="Filter by tag">
+            {allTags.map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 text-sm rounded-full border border-[var(--color-border)] text-[var(--color-muted-foreground)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors cursor-pointer"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         {posts.length === 0 ? (
           <div className="text-center py-20">
@@ -65,6 +60,8 @@ export default function BlogPage() {
                         day: "numeric",
                       })}
                     </time>
+                    <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
+                    <span>{post.readingTime} min read</span>
                     <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
                     <span className="uppercase tracking-wide text-xs">
                       {post.tags[0]}
