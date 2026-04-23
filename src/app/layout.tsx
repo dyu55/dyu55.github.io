@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navigation } from "@/components/nav/Navigation";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Michael Yu — AI Systems Engineer",
   description:
     "AI Systems Engineer specializing in production AI systems, RAG pipelines, and agentic architectures. Building systems that work at scale.",
