@@ -1,0 +1,127 @@
+3:I[4707,[],""]
+5:I[6423,[],""]
+6:I[2060,["185","static/chunks/app/layout-38791d4ca19907f2.js"],"ThemeProvider"]
+7:I[1675,["185","static/chunks/app/layout-38791d4ca19907f2.js"],"Navigation"]
+4:["slug","building-production-rag","d"]
+0:["Y_uq1OXBno_YImOTvnqxw",[[["",{"children":["blog",{"children":[["slug","building-production-rag","d"],{"children":["__PAGE__?{\"slug\":\"building-production-rag\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["blog",{"children":[["slug","building-production-rag","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","blog","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","blog","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/9d41e40a67a4a849.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"name":"theme-color","content":"#121218","media":"(prefers-color-scheme: dark)"}],["$","meta",null,{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"Michael Yu\",\"url\":\"https://dyu55.github.io\",\"jobTitle\":\"AI Systems Engineer\",\"description\":\"AI Systems Engineer specializing in production AI systems, RAG pipelines, and agentic architectures.\",\"sameAs\":[\"https://github.com/dyu55\",\"https://linkedin.com/in/dyu55\"]}"}}]]}],["$","body",null,{"className":"antialiased","children":["$","$L6",null,{"children":[["$","$L7",null,{}],["$","main",null,{"className":"pt-16","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}]]}]}]]}]],null],null],["$L8",null]]]]
+9:I[2972,["717","static/chunks/717-5b5c1f799fef7c9a.js","45","static/chunks/45-45990452bc769c30.js","308","static/chunks/app/blog/%5Bslug%5D/page-5ba1c29fb859d46a.js"],""]
+a:I[2228,["717","static/chunks/717-5b5c1f799fef7c9a.js","45","static/chunks/45-45990452bc769c30.js","308","static/chunks/app/blog/%5Bslug%5D/page-5ba1c29fb859d46a.js"],"default"]
+b:I[2940,["717","static/chunks/717-5b5c1f799fef7c9a.js","45","static/chunks/45-45990452bc769c30.js","308","static/chunks/app/blog/%5Bslug%5D/page-5ba1c29fb859d46a.js"],"MdxContent"]
+c:T14de,"use strict";
+const {Fragment: _Fragment, jsx: _jsx, jsxs: _jsxs} = arguments[0];
+const {useMDXComponents: _provideComponents} = arguments[0];
+function _createMdxContent(props) {
+  const _components = {
+    code: "code",
+    h2: "h2",
+    li: "li",
+    ol: "ol",
+    p: "p",
+    pre: "pre",
+    strong: "strong",
+    ul: "ul",
+    ..._provideComponents(),
+    ...props.components
+  }, {Callout} = _components;
+  if (!Callout) _missingMdxReference("Callout", true);
+  return _jsxs(_Fragment, {
+    children: [_jsx(_components.p, {
+      children: "Building a RAG system is deceptively simple. Embed your documents, query the vector store, stuff the results into an LLM prompt. Done."
+    }), "\n", _jsx(_components.p, {
+      children: "But production? That's where it gets interesting."
+    }), "\n", _jsx(_components.h2, {
+      children: "The Grounding Problem"
+    }), "\n", _jsx(_components.p, {
+      children: "The biggest issue we faced was hallucination. The LLM would confidently state things that weren't in the retrieved documents. Our solution was grounding verification."
+    }), "\n", _jsx(_components.p, {
+      children: "Every answer gets checked against the source documents. If the key claims aren't supported by the retrieved context, we either:"
+    }), "\n", _jsxs(_components.ol, {
+      children: ["\n", _jsx(_components.li, {
+        children: "Flag it as unverified"
+      }), "\n", _jsx(_components.li, {
+        children: "Try a different retrieval strategy"
+      }), "\n", _jsx(_components.li, {
+        children: "Fall back to a more conservative response"
+      }), "\n"]
+    }), "\n", _jsx(Callout, {
+      type: "info",
+      title: "Grounding verification",
+      children: _jsx(_components.p, {
+        children: "Grounding verification runs after every LLM response. It compares the generated claims against the retrieved context using a secondary LLM call. If confidence drops below 0.7, we trigger re-retrieval."
+      })
+    }), "\n", _jsx(_components.h2, {
+      children: "Testing at Scale"
+    }), "\n", _jsx(_components.p, {
+      children: "We wrote 140+ tests covering:"
+    }), "\n", _jsxs(_components.ul, {
+      children: ["\n", _jsx(_components.li, {
+        children: "Retrieval quality metrics"
+      }), "\n", _jsx(_components.li, {
+        children: "Grounding verification accuracy"
+      }), "\n", _jsx(_components.li, {
+        children: "Answer relevance scoring"
+      }), "\n", _jsx(_components.li, {
+        children: "Latency under load"
+      }), "\n"]
+    }), "\n", _jsx(_components.p, {
+      children: "The test suite runs on every PR. It's caught regressions multiple times."
+    }), "\n", _jsx(_components.h2, {
+      children: "Key Learnings"
+    }), "\n", _jsx(Callout, {
+      type: "tip",
+      title: "Chunking strategy",
+      children: _jsx(_components.p, {
+        children: "Chunking strategy matters more than embedding model choice. We went through 5 different chunking approaches before finding the right balance between context window utilization and retrieval precision."
+      })
+    }), "\n", _jsxs(_components.ol, {
+      children: ["\n", _jsxs(_components.li, {
+        children: [_jsx(_components.strong, {
+          children: "Chunking strategy matters more than embedding model choice"
+        }), " — spent weeks tuning embeddings, but the breakthrough came from chunking experiments"]
+      }), "\n", _jsxs(_components.li, {
+        children: [_jsx(_components.strong, {
+          children: "Hybrid search (dense + sparse) outperforms either alone"
+        }), " — BM25 for keyword precision, dense vectors for semantic similarity"]
+      }), "\n", _jsxs(_components.li, {
+        children: [_jsx(_components.strong, {
+          children: "Reranking significantly improves final results"
+        }), " — cross-encoder reranking after initial retrieval boost MAP by 23%"]
+      }), "\n", _jsxs(_components.li, {
+        children: [_jsx(_components.strong, {
+          children: "Don't forget about metadata filtering"
+        }), " — filtering by date, document type, or source improves relevance when combined with semantic search"]
+      }), "\n"]
+    }), "\n", _jsx(_components.p, {
+      children: "The architecture that finally worked:"
+    }), "\n", _jsx(_components.pre, {
+      children: _jsx(_components.code, {
+        children: "User Query → Rewrite → Retrieve (dense + sparse) → RRF Fusion → Rerank → LLM → Grounding Check → Response\n"
+      })
+    }), "\n", _jsx(_components.p, {
+      children: "Each component has dedicated tests. The grounding check is the most important — it's caught 3 production incidents where the LLM was about to say something wrong."
+    }), "\n", _jsx(_components.p, {
+      children: "More details on the specific implementation in the RAG Assistant repo."
+    })]
+  });
+}
+function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = {
+    ..._provideComponents(),
+    ...props.components
+  };
+  return MDXLayout ? _jsx(MDXLayout, {
+    ...props,
+    children: _jsx(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+return {
+  default: MDXContent
+};
+function _missingMdxReference(id, component) {
+  throw new Error("Expected " + (component ? "component" : "object") + " `" + id + "` to be defined: you likely forgot to import, pass, or provide it.");
+}
+2:["$","main",null,{"className":"min-h-screen bg-[var(--color-background)] text-[var(--color-text)]","children":["$","div",null,{"className":"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20","children":[["$","$L9",null,{"href":"/blog","className":"inline-flex items-center gap-2 text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-text)] transition-colors mb-8","children":[["$","$La",null,{"iconNode":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]],"className":"lucide-arrow-left","size":16}],"Back to writing"]}],["$","article",null,{"className":"space-y-6","children":[["$","header",null,{"className":"space-y-4","children":[["$","div",null,{"className":"flex items-center gap-3 text-sm text-[var(--color-muted-foreground)]","children":[["$","time",null,{"dateTime":"2026-04-20","children":"April 19, 2026"}],["$","span",null,{"className":"w-1 h-1 rounded-full bg-[var(--color-border)]"}],["$","span",null,{"children":[2," min read"]}]]}],["$","h1",null,{"className":"text-3xl sm:text-4xl font-bold text-[var(--color-text)]","children":"Building a Production RAG System"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","RAG",{"className":"px-2 py-1 text-xs rounded bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-muted-foreground)]","children":"RAG"}],["$","span","AI",{"className":"px-2 py-1 text-xs rounded bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-muted-foreground)]","children":"AI"}],["$","span","Production",{"className":"px-2 py-1 text-xs rounded bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-muted-foreground)]","children":"Production"}]]}]]}],["$","div",null,{"className":"prose prose-invert max-w-none pt-8 border-t border-[var(--color-border)]","children":["$","$Lb",null,{"source":{"compiledSource":"$c","frontmatter":{},"scope":{}}}]}],["$","div",null,{"className":"mt-12 pt-8 border-t border-[var(--color-border)]","children":["$","div",null,{"className":"flex items-center gap-4","children":[["$","div",null,{"className":"w-10 h-10 rounded-full bg-[var(--color-accent)] flex items-center justify-center text-[var(--color-accent-foreground)] font-semibold","children":"MY"}],["$","div",null,{"children":[["$","p",null,{"className":"font-medium text-[var(--color-text)]","children":"Michael Yu"}],["$","p",null,{"className":"text-sm text-[var(--color-muted-foreground)]","children":"AI Systems Engineer"}]]}]]}]}],false]}]]}]}]
+8:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Building a Production RAG System — Michael Yu"}],["$","meta","3",{"name":"description","content":"Lessons from building a RAG system that handles 10k+ queries per day with 140+ tests."}],["$","meta","4",{"property":"og:title","content":"Michael Yu — AI Systems Engineer"}],["$","meta","5",{"property":"og:description","content":"AI Systems Engineer specializing in production AI systems, RAG pipelines, and agentic architectures."}],["$","meta","6",{"property":"og:url","content":"https://dyu55.github.io"}],["$","meta","7",{"property":"og:site_name","content":"Michael Yu"}],["$","meta","8",{"property":"og:type","content":"website"}],["$","meta","9",{"name":"twitter:card","content":"summary"}],["$","meta","10",{"name":"twitter:title","content":"Michael Yu — AI Systems Engineer"}],["$","meta","11",{"name":"twitter:description","content":"AI Systems Engineer specializing in production AI systems, RAG pipelines, and agentic architectures."}],["$","link","12",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+1:null
