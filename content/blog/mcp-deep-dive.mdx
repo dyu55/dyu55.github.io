@@ -1,0 +1,56 @@
+---
+title: "MCP Deep Dive"
+date: "2026-04-10"
+tags: ["MCP", "Agents"]
+excerpt: "Understanding the Model Context Protocol and how it enables agent tool use."
+coverImage: "/images/mcp-architecture.png"
+---
+
+The Model Context Protocol (MCP) is how AI agents interact with tools. Here's how it works.
+
+## What is MCP?
+
+MCP provides a standardized way for AI systems to:
+
+- Discover available tools
+- Invoke tools with structured parameters
+- Handle tool responses
+- Manage tool state
+
+Think of it as a USB-C for AI models. Instead of every agent-tool integration being a custom implementation, MCP standardizes the connection.
+
+## The Protocol
+
+<Callout type="info" title="MCP Overview">
+1. **Discovery**: The agent queries for available tools
+2. **Invocation**: Agent calls a tool with JSON parameters
+3. **Response**: Tool returns structured data
+4. **Integration**: Response is incorporated into context
+</Callout>
+
+## Why MCP Matters
+
+Without a standard protocol, every agent-tool integration is custom. MCP enables:
+
+- Reusable tool implementations
+- Tool composability
+- Agent portability across tool ecosystems
+
+<Callout type="tip" title="MCP Design Principle">
+Keep tools focused. A tool that does one thing well is more reliable and composable than a Swiss Army knife.
+</Callout>
+
+## MyAgent's MCP Integration
+
+MyAgent uses MCP servers for:
+
+- **File system operations** — read, write, search files
+- **Git interactions** — status, diff, commit, branch
+- **Web search** — search and fetch pages
+- **Custom skill execution** — run defined skills with parameters
+
+The skills system loads MCP-compatible tool definitions and executes them in a sandboxed environment.
+
+More details on the specific MCP implementation in MyAgent's GitHub repo.
+
+The key insight: MCP turns tools from hard-coded integrations into discoverable, composable primitives. That's the difference between a demo and a production system.

@@ -1,0 +1,57 @@
+---
+title: "Building a Production RAG System"
+date: "2026-04-20"
+tags: ["RAG", "AI", "Production"]
+excerpt: "Lessons from building a RAG system that handles 10k+ queries per day with 140+ tests."
+coverImage: "/images/rag-architecture.png"
+---
+
+Building a RAG system is deceptively simple. Embed your documents, query the vector store, stuff the results into an LLM prompt. Done.
+
+But production? That's where it gets interesting.
+
+## The Grounding Problem
+
+The biggest issue we faced was hallucination. The LLM would confidently state things that weren't in the retrieved documents. Our solution was grounding verification.
+
+Every answer gets checked against the source documents. If the key claims aren't supported by the retrieved context, we either:
+
+1. Flag it as unverified
+2. Try a different retrieval strategy
+3. Fall back to a more conservative response
+
+<Callout type="info" title="Grounding verification">
+Grounding verification runs after every LLM response. It compares the generated claims against the retrieved context using a secondary LLM call. If confidence drops below 0.7, we trigger re-retrieval.
+</Callout>
+
+## Testing at Scale
+
+We wrote 140+ tests covering:
+
+- Retrieval quality metrics
+- Grounding verification accuracy
+- Answer relevance scoring
+- Latency under load
+
+The test suite runs on every PR. It's caught regressions multiple times.
+
+## Key Learnings
+
+<Callout type="tip" title="Chunking strategy">
+Chunking strategy matters more than embedding model choice. We went through 5 different chunking approaches before finding the right balance between context window utilization and retrieval precision.
+</Callout>
+
+1. **Chunking strategy matters more than embedding model choice** — spent weeks tuning embeddings, but the breakthrough came from chunking experiments
+2. **Hybrid search (dense + sparse) outperforms either alone** — BM25 for keyword precision, dense vectors for semantic similarity
+3. **Reranking significantly improves final results** — cross-encoder reranking after initial retrieval boost MAP by 23%
+4. **Don't forget about metadata filtering** — filtering by date, document type, or source improves relevance when combined with semantic search
+
+The architecture that finally worked:
+
+```
+User Query → Rewrite → Retrieve (dense + sparse) → RRF Fusion → Rerank → LLM → Grounding Check → Response
+```
+
+Each component has dedicated tests. The grounding check is the most important — it's caught 3 production incidents where the LLM was about to say something wrong.
+
+More details on the specific implementation in the RAG Assistant repo.

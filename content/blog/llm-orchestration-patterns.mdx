@@ -1,0 +1,44 @@
+---
+title: "LLM Orchestration Patterns"
+date: "2026-04-15"
+tags: ["LLM", "Architecture"]
+excerpt: "Common patterns for structuring LLM applications: from simple chains to complex agents."
+coverImage: "/images/llm-patterns.png"
+---
+
+LLM applications range from simple prompt-response chains to complex multi-agent systems. Here's a breakdown of the patterns I've used.
+
+## Chain
+
+The simplest pattern: prompt → LLM → response. Good for single-turn tasks.
+
+## Chain of Thought
+
+Add "think step by step" or similar instructions to get the LLM to reason through problems. Works surprisingly well for many tasks.
+
+<Callout type="info" title="When to use Chain of Thought">
+Chain of Thought shines for: math problems, logical deduction, multi-step reasoning where the intermediate steps matter for the final answer. Don't use it for simple classification or extraction tasks.
+</Callout>
+
+## Retrieval Augmented Generation (RAG)
+
+Hybrid search over documents + LLM synthesis. The industry standard for knowledge-intensive tasks.
+
+## Tool Use
+
+Give the LLM access to external tools (code execution, API calls, search). Requires careful prompt engineering and error handling.
+
+## Agents
+
+Full agentic loops: plan → act → observe → reflect. This is where MyAgent lives. The complexity is higher but the capabilities are significantly greater.
+
+## Which to Use?
+
+| Task Type | Pattern |
+|-----------|---------|
+| Single question, knowledge base available | RAG |
+| Multi-step reasoning | Chain of Thought |
+| Need external data/actions | Tool Use |
+| Open-ended tasks requiring planning | Agents |
+
+Start simple. Only add complexity when the simpler pattern fails. Most applications that need "agents" actually just need better prompting or retrieval.
