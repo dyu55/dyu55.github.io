@@ -1,4 +1,7 @@
-import { Mail, ArrowRight } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Mail, ArrowRight, Check, AlertCircle } from "lucide-react";
 
 const GitHubIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -13,9 +16,92 @@ const LinkedInIcon = () => (
 );
 
 export function Contact() {
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const email = formData.get("email") as string;
+
+    setNewsletterStatus("loading");
+
+    // TODO: Replace with actual newsletter service (ConvertKit/Buttondown)
+    // For now, simulate success after a brief delay
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Simulate success (replace with actual API call)
+    // const response = await fetch('/api/subscribe', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ email }),
+    // });
+
+    // Newsletter service placeholder - integrate ConvertKit/Buttondown in Phase 3
+    setNewsletterStatus("success");
+    form.reset();
+  };
+
   return (
     <section id="contact" className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-[var(--color-surface)]">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto space-y-16">
+        {/* Newsletter Section */}
+        <div className="text-center max-w-xl mx-auto">
+          <h3 className="text-xl sm:text-2xl font-bold text-[var(--color-text)] mb-3">
+            Subscribe to Engineering Notes
+          </h3>
+          <p className="text-[var(--color-text-secondary)] mb-6">
+            Deep dives on AI systems, production patterns, and lessons from building
+            agentic architectures. No spam, unsubscribe anytime.
+          </p>
+
+          {newsletterStatus === "success" ? (
+            <div className="flex items-center justify-center gap-2 text-green-500 p-4 bg-green-500/10 rounded-lg">
+              <Check size={20} />
+              <span>You&apos;re subscribed! Check your inbox for confirmation.</span>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleNewsletterSubmit}
+              className="flex flex-col sm:flex-row gap-3"
+            >
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="your@email.com"
+                disabled={newsletterStatus === "loading"}
+                className="flex-1 px-4 py-2.5 rounded-lg bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all disabled:opacity-50"
+              />
+              <button
+                type="submit"
+                disabled={newsletterStatus === "loading"}
+                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg font-medium bg-[var(--color-accent)] text-[var(--color-accent-foreground)] hover:opacity-90 transition-opacity disabled:opacity-50"
+              >
+                {newsletterStatus === "loading" ? (
+                  <span>Subscribing...</span>
+                ) : (
+                  <>
+                    Subscribe
+                    <ArrowRight size={16} />
+                  </>
+                )}
+              </button>
+            </form>
+          )}
+
+          {newsletterStatus === "error" && (
+            <div className="flex items-center justify-center gap-2 text-red-500 mt-3 text-sm">
+              <AlertCircle size={16} />
+              <span>Something went wrong. Please try again.</span>
+            </div>
+          )}
+        </div>
+
+        {/* Divider */}
+        <hr className="border-[var(--color-border)]" />
+
+        {/* Contact Section */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Text */}
           <div className="space-y-6">
