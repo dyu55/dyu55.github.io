@@ -22,22 +22,20 @@ export function Contact() {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const email = formData.get("email") as string;
+    const email = formData.get("email") as string; // eslint-disable-line @typescript-eslint/no-unused-vars
 
     setNewsletterStatus("loading");
 
-    // TODO: Replace with actual newsletter service (ConvertKit/Buttondown)
-    // For now, simulate success after a brief delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // Simulate success (replace with actual API call)
+    // Newsletter service placeholder - integrate ConvertKit/Buttondown in Phase 3
+    // TODO: Replace with actual API call when newsletter service is integrated
     // const response = await fetch('/api/subscribe', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json' },
     //   body: JSON.stringify({ email }),
     // });
 
-    // Newsletter service placeholder - integrate ConvertKit/Buttondown in Phase 3
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     setNewsletterStatus("success");
     form.reset();
   };
