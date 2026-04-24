@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getAllPosts, getAllTags } from "@/lib/blog";
+import { BlogSearch } from "@/components/blog/BlogSearch";
 
 export const metadata = {
   title: "Writing — Michael Yu",
@@ -22,6 +23,11 @@ export default function BlogPage() {
             Thoughts on AI systems, engineering, and building in public.
           </p>
         </header>
+
+        {/* Search */}
+        <div className="mb-8">
+          <BlogSearch />
+        </div>
 
         {/* Tag filter pills */}
         {allTags.length > 0 && (
