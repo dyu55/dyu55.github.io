@@ -40,7 +40,7 @@ export function BlogSearch() {
           pagefindRef.current = pagefind as PagefindAPI;
           setIsLoaded(true);
         }
-      } catch (err) {
+      } catch {
         // Pagefind not available (dev mode or build not complete)
         console.debug("Pagefind not available");
       }
@@ -69,8 +69,8 @@ export function BlogSearch() {
       } else {
         setResults([]);
       }
-    } catch (err) {
-      console.error("Search error:", err);
+    } catch {
+      console.error("Search error");
       setError("Search failed to load");
       setResults([]);
     } finally {
