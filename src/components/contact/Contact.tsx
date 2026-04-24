@@ -129,12 +129,11 @@ export function Contact() {
                 <GitHubIcon />
                 <span>github.com/dyu55</span>
               </a>
-                            <a
+              <a
                 href="https://www.linkedin.com/in/michael-yu-614181388"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors"
-              > hover:text-[var(--color-accent)] transition-colors"
               >
                 <LinkedInIcon />
                 <span>linkedin.com/in/michael-yu-614181388</span>
