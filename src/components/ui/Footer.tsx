@@ -37,7 +37,7 @@ export function Footer() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com/in/dyu55"
+              href="https://www.linkedin.com/in/michael-yu-614181388"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-text)] transition-colors"

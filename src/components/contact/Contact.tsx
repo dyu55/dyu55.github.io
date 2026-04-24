@@ -129,14 +129,15 @@ export function Contact() {
                 <GitHubIcon />
                 <span>github.com/dyu55</span>
               </a>
-              <a
-                href="https://linkedin.com/in/dyu55"
+                            <a
+                href="https://www.linkedin.com/in/michael-yu-614181388"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors"
+              > hover:text-[var(--color-accent)] transition-colors"
               >
                 <LinkedInIcon />
-                <span>linkedin.com/in/dyu55</span>
+                <span>linkedin.com/in/michael-yu-614181388</span>
               </a>
             </div>
           </div>
@@ -144,8 +145,18 @@ export function Contact() {
           {/* Right: Contact form */}
           <div className="p-6 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)]">
             <form
-              action="https://formspree.io/f/your-form-id"
-              method="POST"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const name = formData.get("name") as string;
+                const email = formData.get("email") as string;
+                const message = formData.get("message") as string;
+                const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+                const body = encodeURIComponent(
+                  `Name: ${name}\nEmail: ${email}\n\n${message}`
+                );
+                window.location.href = `mailto:hello@dyu55.dev?subject=${subject}&body=${body}`;
+              }}
               className="space-y-4"
             >
               <div>
