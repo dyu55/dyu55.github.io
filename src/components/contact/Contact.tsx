@@ -104,7 +104,7 @@ export function Contact() {
           {/* Left: Text */}
           <div className="space-y-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-text)]">
-              Work With Me
+              Get In Touch
             </h2>
             <p className="text-[var(--color-text-secondary)] leading-relaxed">
               I&apos;m interested in AI systems engineering roles, especially at companies

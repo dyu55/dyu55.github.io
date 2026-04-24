@@ -49,7 +49,7 @@ export function WorkWithMeSection() {
         >
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-4">
-            Work With Me
+            Get In Touch
           </h2>
 
           <p className="text-[var(--color-text-secondary)] mb-8">
