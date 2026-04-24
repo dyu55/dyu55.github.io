@@ -1,6 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Bot, Database, Server } from "lucide-react";
+
+interface Capability {
+  label: string;
+  icon: React.ReactNode;
+}
+
+const capabilities: Capability[] = [
+  { label: "Agents", icon: <Bot className="w-4 h-4" /> },
+  { label: "RAG", icon: <Database className="w-4 h-4" /> },
+  { label: "Infra", icon: <Server className="w-4 h-4" /> },
+];
 
 interface HeroSectionProps {
   name?: string;
@@ -66,6 +78,25 @@ export function HeroSection({
           >
             {hook}
           </p>
+
+          {/* Capability proof strip */}
+          <div
+            className={`flex flex-wrap items-center gap-3 pt-2 transition-all duration-500 delay-350 ${
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            {capabilities.map((cap) => (
+              <span
+                key={cap.label}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-muted-foreground)]"
+              >
+                <span className="text-[var(--color-accent)]" aria-hidden="true">
+                  {cap.icon}
+                </span>
+                {cap.label}
+              </span>
+            ))}
+          </div>
 
           {/* CTAs */}
           <div

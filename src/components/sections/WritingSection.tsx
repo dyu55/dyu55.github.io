@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Clock, ArrowRight } from "lucide-react";
 
 interface BlogPostMeta {
   slug: string;
@@ -24,7 +25,32 @@ export function WritingSection({ posts }: WritingSectionProps) {
   }, []);
 
   if (posts.length === 0) {
-    return null;
+    return (
+      <section
+        id="writing"
+        className="py-[var(--space-section)] px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-6xl mx-auto">
+          {/* Section header */}
+          <div className="mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-4">
+              Engineering Notes
+            </h2>
+            <p className="text-[var(--color-text-secondary)] max-w-2xl">
+              Thinking out loud on AI systems, agent architectures, and what
+              makes production systems reliable.
+            </p>
+          </div>
+
+          {/* Empty state */}
+          <div className="text-center py-12">
+            <p className="text-[var(--color-muted-foreground)]">
+              No posts yet. Check back soon.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -49,19 +75,7 @@ export function WritingSection({ posts }: WritingSectionProps) {
             className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent)] hover:opacity-80 transition-opacity"
           >
             All posts
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
@@ -71,7 +85,7 @@ export function WritingSection({ posts }: WritingSectionProps) {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group block p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300"
+              className="group block p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-1 transition-all duration-300"
               style={{
                 transitionDelay: `${index * 50}ms`,
                 opacity: mounted ? 1 : 0,
@@ -79,17 +93,22 @@ export function WritingSection({ posts }: WritingSectionProps) {
               }}
             >
               <div className="space-y-4">
-                {/* Meta */}
-                <div className="flex items-center gap-3 text-xs text-[var(--color-muted-foreground)]">
-                  <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </time>
-                  <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
-                  <span>{post.readingTime} min read</span>
+                {/* Meta with reading time badge */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3 text-xs text-[var(--color-muted-foreground)]">
+                    <time dateTime={post.date}>
+                      {new Date(post.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </div>
+                  {/* Reading time badge */}
+                  <span className="inline-flex items-center gap-1 text-xs text-[var(--color-accent)]">
+                    <Clock className="w-3.5 h-3.5" />
+                    {post.readingTime} min
+                  </span>
                 </div>
 
                 {/* Title */}
@@ -125,19 +144,7 @@ export function WritingSection({ posts }: WritingSectionProps) {
             className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent)]"
           >
             View all posts
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

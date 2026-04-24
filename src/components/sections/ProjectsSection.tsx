@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 interface Project {
   slug: string;
@@ -34,6 +35,13 @@ const projects: Project[] = [
       "Personal finance tracker with AI-powered categorization and spending insights for better money management.",
     tags: ["React", "AI", "Finance"],
   },
+  {
+    slug: "sneaker-store",
+    title: "Sneaker Store",
+    description:
+      "E-commerce platform with inventory management, order tracking, and real-time analytics dashboard.",
+    tags: ["Next.js", "PostgreSQL", "Stripe"],
+  },
 ];
 
 export function ProjectsSection() {
@@ -61,13 +69,13 @@ export function ProjectsSection() {
         </div>
 
         {/* Bento grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {projects.map((project, index) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className={`group relative p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300 ${
-                project.featured ? "md:col-span-2 lg:col-span-2" : ""
+              className={`group relative p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-1 transition-all duration-300 ${
+                project.featured ? "lg:col-span-1 lg:row-span-1" : ""
               }`}
               style={{
                 transitionDelay: `${index * 50}ms`,
@@ -84,7 +92,11 @@ export function ProjectsSection() {
 
               {/* Content */}
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+                <h3
+                  className={`font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors ${
+                    project.featured ? "text-2xl" : "text-xl"
+                  }`}
+                >
                   {project.title}
                 </h3>
 
@@ -107,19 +119,7 @@ export function ProjectsSection() {
                 {/* Arrow indicator */}
                 <div className="flex items-center gap-2 text-[var(--color-accent)] opacity-0 group-hover:opacity-100 transition-opacity">
                   <span className="text-sm font-medium">View project</span>
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
+                  <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
             </Link>
