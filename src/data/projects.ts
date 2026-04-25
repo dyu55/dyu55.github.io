@@ -51,8 +51,8 @@ Key features:
   {
     slug: "budget-smart",
     title: "Budget Smart",
-    tagline: "Full-stack finance app with 7000+ concurrent users",
-    description: `A full-stack personal finance app with receipt tracking and budget management that scaled to 7000+ concurrent users. Deployed on AWS EC2 with load testing using JMeter to validate performance under production traffic.
+    tagline: "Full-stack finance app with high concurrent users",
+    description: `A full-stack personal finance app with receipt tracking and budget management. Deployed on AWS EC2 with load testing using JMeter to validate performance under production traffic.
 
 Key features:
 - Receipt OCR scanning with AWS Textract
