@@ -15,17 +15,18 @@ export const projects: Project[] = [
   {
     slug: "myagent",
     title: "MyAgent",
-    tagline: "Coding agent with Plan/Act/Reflect loop",
-    description: `MyAgent is a coding agent built with the Plan/Act/Reflect loop architecture. It uses the Model Context Protocol (MCP) for tool integration and has a skills system that extends its capabilities.
+    tagline: "Open-source coding agent with Plan/Act/Reflect loop",
+    description: `MyAgent is an open-source coding agent designed to autonomously develop complete projects using local 8B/9B language models. Inspired by Claude Code's architecture, it provides an interactive CLI where users simply describe tasks, and the agent handles planning, execution, testing, and version control.
 
 Key features:
-- Multi-step task decomposition
-- Tool use via MCP servers
-- Skill loading and execution
-- Self-correction via reflection`,
+- Claude Code-style interaction — natural language task descriptions
+- External memory mode — persistent logs, Git integration, and progress tracking
+- Modular tool system — file operations, code execution, search, and Git operations
+- Multi-provider support — works with Ollama and OpenAI-compatible APIs
+- Plan/Act/Reflect loop — task planning, execution, reflection, and error recovery
+- LLM-powered reflection — automatic error classification and recovery suggestions`,
     tags: ["TypeScript", "MCP", "LLM", "Agentic AI"],
-    githubUrl: "https://github.com/dyu55/myagent",
-    demoUrl: "https://myagent.demo.dev",
+    githubUrl: "https://github.com/dyu55/My-Agent",
     coverImage: "/images/screenshot1.png",
     featured: true,
     order: 1,
@@ -65,17 +66,20 @@ Key features:
   },
   {
     slug: "sneaker-store",
-    title: "Sneaker Store",
-    tagline: "E-commerce platform with inventory management",
-    description: `An e-commerce platform for sneaker sales with built-in inventory management, size tracking, and order fulfillment.
+    title: "SoleMate",
+    tagline: "Full-stack e-commerce platform for sneaker enthusiasts",
+    description: `SoleMate is a full-stack e-commerce platform for sneaker enthusiasts, built as an EECS 4413 project at York University.
 
 Key features:
-- Product catalog with filtering
-- Shopping cart and checkout
-- Admin dashboard
-- Order management`,
-    tags: ["TypeScript", "React", "Node.js", "MongoDB"],
-    githubUrl: "https://github.com/dyu55/sneaker-store",
+- Product catalog with detailed descriptions, prices, and images
+- Secure user authentication (sign-up/login)
+- Real-time shopping cart management
+- Simulated checkout process
+- Admin dashboard for inventory management
+- Advanced search and filtering
+- Mobile-friendly responsive design`,
+    tags: ["Java", "Spring Boot", "React", "PostgreSQL"],
+    githubUrl: "https://github.com/dyu55/eecs4413_sneaker_store",
     coverImage: "/images/sneaker_store.png",
     order: 4,
   },
