@@ -51,16 +51,24 @@ Key features:
   {
     slug: "budget-smart",
     title: "Budget Smart",
-    tagline: "Full-stack finance platform, 7000+ concurrent users",
-    description: `A full-stack personal finance platform that scaled to 7000+ concurrent users. Built with performance and reliability as core requirements.
+    tagline: "Full-stack finance app with 7000+ concurrent users",
+    description: `A full-stack personal finance app with receipt tracking and budget management that scaled to 7000+ concurrent users. Deployed on AWS EC2 with load testing using JMeter to validate performance under production traffic.
 
 Key features:
-- Real-time transaction updates
-- Budget tracking and alerts
-- Multi-currency support
-- Historical analytics`,
-    tags: ["TypeScript", "Next.js", "PostgreSQL", "Redis"],
-    demoUrl: "https://budgetsmart.app",
+- Receipt OCR scanning with AWS Textract
+- LLM-powered spending insights with AWS Bedrock (Claude)
+- Real-time transaction updates via polling
+- Budget tracking with spending alerts
+- JWT authentication with AWS Cognito
+- Async processing pipeline with AWS SQS
+
+Tech stack:
+- Mobile: React Native (Expo) for iOS/Android
+- Backend: Spring Boot (Java 21) with Flyway migrations
+- Database: PostgreSQL
+- Cache: Redis (Upstash in production)
+- Infrastructure: AWS EC2, S3, Cognito, SQS, Bedrock`,
+    tags: ["React Native", "Expo", "Spring Boot", "Java 21", "PostgreSQL", "Redis", "AWS"],
     coverImage: "/images/screenshot3.png",
     order: 3,
   },
