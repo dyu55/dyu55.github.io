@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Michael Yu — Portfolio
 
-## Getting Started
+Personal portfolio at **https://dyu55.github.io/**. Built with Next.js 14, TypeScript and Tailwind CSS; statically exported for the existing GitHub Pages workflow.
 
-First, run the development server:
+## Develop
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Development files use `.next-dev`; production builds use `.next`, so a build does not overwrite the active preview.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Validate and publish
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+npm run build
+```
 
-## Learn More
+The build checks TypeScript and ESLint, exports every route into `out/`, then creates the Pagefind article index. A push to `main` triggers `.github/workflows/deploy.yml`. GitHub Pages serves the exported site with directory-style URLs. The existing Playwright smoke suite is available through `npm test` when browser QA is requested.
 
-To learn more about Next.js, take a look at the following resources:
+## Edit the content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/data/profile.ts`: public contact links.
+- `src/data/projects.ts`: project names, concise descriptions and repository links.
+- `src/data/project-details.ts`: case studies, screenshot captions and deferred projects.
+- `public/images/budget-smart/`: seven original app screenshots supplied for the portfolio; fictional demo data.
+- `src/components/sections/`: homepage sections.
+- `content/blog/`: existing MDX articles.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Budget Smart is presented as the rebuilt native SwiftUI app. SoleMate is identified as a team course project with simulated checkout. MyAgent and RAG Assistant remain in-development entries until their ongoing refactors and portfolio materials are ready. No unverified traffic, user-count, performance or benchmark claims are displayed.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The existing Formspree subscription destination is retained. Sending a real subscription is not part of build validation. Full-resolution screenshots open in a separate tab; no image-generation assets or external font requests are required.

@@ -1,162 +1,108 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-
-interface Project {
-  slug: string;
-  title: string;
-  description: string;
-  tags: string[];
-  featured?: boolean;
-}
-
-const projects: Project[] = [
-  {
-    slug: "myagent",
-    title: "MyAgent",
-    description:
-      "CLI agent with MCP server integration, enabling AI systems to interact with files, Git, and web search.",
-    tags: ["Agents", "MCP", "CLI"],
-    featured: true,
-  },
-  {
-    slug: "rag-assistant",
-    title: "RAG Assistant",
-    description:
-      "Production RAG system handling 10k+ queries daily with 140+ tests, grounding verification, and hybrid search.",
-    tags: ["RAG", "AI", "Production"],
-  },
-  {
-    slug: "budget-smart",
-    title: "Budget Smart",
-    description:
-      "Personal finance tracker with AI-powered categorization and spending insights for better money management.",
-    tags: ["React", "AI", "Finance"],
-  },
-  {
-    slug: "sneaker-store",
-    title: "Sneaker Store",
-    description:
-      "E-commerce platform with inventory management, order tracking, and real-time analytics dashboard.",
-    tags: ["Next.js", "PostgreSQL", "Stripe"],
-  },
-];
+import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/data/projects";
+import { projectDetails } from "@/data/project-details";
 
 export function ProjectsSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+  const budget = projects.find((p) => p.slug === "budget-smart")!;
   return (
     <section
       id="projects"
-      className="py-[var(--space-section)] px-4 sm:px-6 lg:px-8"
+      className="work-section shell"
+      aria-labelledby="work-title"
     >
-      <div className="max-w-6xl mx-auto">
-        {/* Section header */}
-        <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-4">
-            Production AI Systems
-          </h2>
-          <p className="text-[var(--color-text-secondary)] max-w-2xl">
-            Systems I&apos;ve built and shipped — from agentic frameworks to
-            production RAG pipelines.
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">
+            <span className="section-number">01 /</span> Selected work
           </p>
+          <h2 id="work-title">From idea to interaction.</h2>
         </div>
-
-        {/* Bento grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {projects.map((project, index) => (
-            <Link
-              key={project.slug}
-              href={`/projects/${project.slug}`}
-              className={`group relative p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-1 transition-all duration-300 ${
-                project.featured ? "lg:col-span-1 lg:row-span-1" : ""
-              }`}
-              style={{
-                transitionDelay: `${index * 50}ms`,
-                opacity: mounted ? 1 : 0,
-                transform: mounted ? "translateY(0)" : "translateY(20px)",
-              }}
-            >
-              {/* Featured indicator */}
-              {project.featured && (
-                <div className="absolute top-4 right-4 px-2 py-1 text-xs font-medium rounded bg-[var(--color-accent)] text-[var(--color-accent-foreground)]">
-                  Featured
-                </div>
-              )}
-
-              {/* Content */}
-              <div className="space-y-4">
-                <h3
-                  className={`font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors ${
-                    project.featured ? "text-2xl" : "text-xl"
-                  }`}
-                >
-                  {project.title}
-                </h3>
-
-                <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 text-xs rounded bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-muted-foreground)]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Arrow indicator */}
-                <div className="flex items-center gap-2 text-[var(--color-accent)] opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-sm font-medium">View project</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Stats row */}
-        <div
-          className={`mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-500 delay-300 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
+        <p>
+          A closer look at the products I build and the decisions behind them.
+        </p>
+      </div>
+      <article className="project-feature">
+        <Link
+          href="/projects/budget-smart/"
+          className="project-stage"
+          aria-label="View Budget Smart project and app screenshots"
         >
-          <div className="p-4 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] text-center">
-            <div className="text-2xl font-bold text-[var(--color-text)]">4</div>
-            <div className="text-sm text-[var(--color-muted-foreground)]">
-              Projects shipped
-            </div>
+          {projectDetails["budget-smart"].screens!.slice(0, 3).map((s) => (
+            <Image
+              key={s.src}
+              src={s.src}
+              alt={s.alt}
+              width={1206}
+              height={2622}
+              sizes="(max-width: 760px) 30vw, 240px"
+            />
+          ))}
+        </Link>
+        <div className="project-info">
+          <div>
+            <p className="eyebrow">01 · NATIVE iOS APP</p>
+            <h3>{budget.title}</h3>
+            <p>
+              A little more clarity.
+              <br />
+              Every day.
+            </p>
           </div>
-          <div className="p-4 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] text-center">
-            <div className="text-2xl font-bold text-[var(--color-text)]">140+</div>
-            <div className="text-sm text-[var(--color-muted-foreground)]">
-              RAG tests
+          <div>
+            <p>{budget.description}</p>
+            <div className="tag-list">
+              {["SwiftUI", "On-device OCR", "Encrypted backup"].map((t) => (
+                <span key={t}>{t}</span>
+              ))}
             </div>
-          </div>
-          <div className="p-4 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] text-center">
-            <div className="text-2xl font-bold text-[var(--color-text)]">7k+</div>
-            <div className="text-sm text-[var(--color-muted-foreground)]">
-              Concurrent users
-            </div>
-          </div>
-          <div className="p-4 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] text-center">
-            <div className="text-2xl font-bold text-[var(--color-text)]">2yr</div>
-            <div className="text-sm text-[var(--color-muted-foreground)]">
-              AI/agent focus
-            </div>
+            <Link href="/projects/budget-smart/" className="text-link">
+              Explore the project <ArrowUpRight size={18} />
+            </Link>
           </div>
         </div>
+      </article>
+      <div className="project-list">
+        <Link href="/projects/sneaker-store/" className="project-row">
+          <span className="project-index">02</span>
+          <div>
+            <h3>SoleMate</h3>
+            <span className="project-category">
+              Full-stack web · E-commerce
+            </span>
+          </div>
+          <p>
+            A sneaker storefront, from product discovery to simulated checkout
+            and inventory management.
+          </p>
+          <ArrowUpRight size={22} />
+        </Link>
+        <Link href="/projects/myagent/" className="project-row">
+          <span className="project-index">03</span>
+          <div>
+            <h3>MyAgent</h3>
+            <span className="project-category">AI tools · In development</span>
+          </div>
+          <p>
+            An open-source coding agent. A new version is currently in progress.
+          </p>
+          <ArrowUpRight size={22} />
+        </Link>
+        <Link href="/projects/rag-assistant/" className="project-row">
+          <span className="project-index">04</span>
+          <div>
+            <h3>RAG Assistant</h3>
+            <span className="project-category">
+              Knowledge retrieval · In development
+            </span>
+          </div>
+          <p>
+            A document question-answering assistant. A new version is currently
+            in progress.
+          </p>
+          <ArrowUpRight size={22} />
+        </Link>
       </div>
     </section>
   );

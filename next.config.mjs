@@ -1,20 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
-  transpilePackages: ['next-mdx-remote'],
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  // Disable SWC for faster builds and avoid trace collection issues
-  experimental: {
-    disableOptimizedRsbuild: true,
-  },
+  output: "export",
+  distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
+  trailingSlash: true,
+  images: { unoptimized: true },
+  transpilePackages: ["next-mdx-remote"],
 };
-
 export default nextConfig;

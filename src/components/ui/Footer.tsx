@@ -1,52 +1,21 @@
-import Link from "next/link";
-
+import { profile } from "@/data/profile";
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-[var(--color-border)]">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Logo and copyright */}
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="font-semibold text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
-            >
-              Michael Yu
-            </Link>
-            <span className="text-sm text-[var(--color-muted-foreground)]">
-              © {currentYear}
-            </span>
-          </div>
-
-          {/* Links */}
-          <nav className="flex items-center gap-6">
-            <Link
-              href="/blog"
-              className="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-text)] transition-colors"
-            >
-              Writing
-            </Link>
-            <a
-              href="https://github.com/dyu55"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-text)] transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/michael-yu-614181388"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-text)] transition-colors"
-            >
-              LinkedIn
-            </a>
-          </nav>
-        </div>
-      </div>
+    <footer className="site-footer shell">
+      <p>
+        <strong>Michael Yu</strong> <span className="mx-3">/</span> ©{" "}
+        {new Date().getFullYear()}
+      </p>
+      <nav aria-label="Footer navigation">
+        <a href="/blog/">Writing</a>
+        <a href={profile.github} target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+        <a href="#main-content">Back to top ↑</a>
+      </nav>
     </footer>
   );
 }

@@ -15,61 +15,40 @@ export const projects: Project[] = [
   {
     slug: "myagent",
     title: "MyAgent",
-    tagline: "Open-source coding agent with Plan/Act/Reflect loop",
-    description: `MyAgent is an open-source coding agent designed to autonomously develop complete projects using local 8B/9B language models. Inspired by Claude Code's architecture, it provides an interactive CLI where users simply describe tasks, and the agent handles planning, execution, testing, and version control.
-
-Key features:
-- Claude Code-style interaction — natural language task descriptions
-- External memory mode — persistent logs, Git integration, and progress tracking
-- Modular tool system — file operations, code execution, search, and Git operations
-- Multi-provider support — works with Ollama and OpenAI-compatible APIs
-- Plan/Act/Reflect loop — task planning, execution, reflection, and error recovery
-- LLM-powered reflection — automatic error classification and recovery suggestions`,
-    tags: ["TypeScript", "MCP", "LLM", "Agentic AI"],
+    tagline: "An open-source coding agent",
+    description:
+      "An open-source coding agent. A new version is currently in progress.",
+    tags: [],
     githubUrl: "https://github.com/dyu55/My-Agent",
-    coverImage: "/images/screenshot1.png",
-    featured: true,
+    coverImage: "",
     order: 1,
   },
   {
     slug: "rag-assistant",
     title: "RAG Assistant",
-    tagline: "Production RAG with grounding verification",
-    description: `A production-ready Retrieval Augmented Generation system with 140+ tests ensuring answer quality through grounding verification.
-
-Key features:
-- Semantic search with vector embeddings
-- Grounding verification against source documents
-- Citation tracking
-- Confidence scoring`,
-    tags: ["Python", "LangChain", "Vector DB", "RAG"],
-    githubUrl: "https://github.com/dyu55/rag-assistant",
-    demoUrl: "https://rag.demo.dev",
-    coverImage: "/images/screenshot2.png",
+    tagline: "A document question-answering assistant",
+    description:
+      "A document question-answering assistant. A new version is currently in progress.",
+    tags: [],
+    githubUrl: "https://github.com/dyu55/RAG-assistant",
+    coverImage: "",
     order: 2,
   },
   {
     slug: "budget-smart",
     title: "Budget Smart",
-    tagline: "Full-stack finance app with high concurrent users",
-    description: `A full-stack personal finance app with receipt tracking and budget management. Deployed on AWS EC2 with load testing using JMeter to validate performance under production traffic.
-
-Key features:
-- Receipt OCR scanning with AWS Textract
-- LLM-powered spending insights with AWS Bedrock (Claude)
-- Real-time transaction updates via polling
-- Budget tracking with spending alerts
-- JWT authentication with AWS Cognito
-- Async processing pipeline with AWS SQS
-
-Tech stack:
-- Mobile: React Native (Expo) for iOS/Android
-- Backend: Spring Boot (Java 21) with Flyway migrations
-- Database: PostgreSQL
-- Cache: Redis (Upstash in production)
-- Infrastructure: AWS EC2, S3, Cognito, SQS, Bedrock`,
-    tags: ["React Native", "Expo", "Spring Boot", "Java 21", "PostgreSQL", "Redis", "AWS"],
-    coverImage: "/images/screenshot3.png",
+    tagline: "Native iOS budgeting, built around your everyday life",
+    description:
+      "Budget Smart is a native iOS budgeting app built with SwiftUI. It combines offline expense tracking, monthly budgets, spending insights and on-device receipt recognition, with optional encrypted cloud backup powered by Cloudflare Workers and D1.",
+    tags: [
+      "SwiftUI",
+      "Swift",
+      "Apple Vision",
+      "TypeScript",
+      "Cloudflare",
+      "D1",
+    ],
+    coverImage: "/images/budget-smart/01-home.png",
     order: 3,
   },
   {
@@ -88,7 +67,7 @@ Key features:
 - Mobile-friendly responsive design`,
     tags: ["Java", "Spring Boot", "React", "PostgreSQL"],
     githubUrl: "https://github.com/dyu55/eecs4413_sneaker_store",
-    coverImage: "/images/sneaker_store.png",
+    coverImage: "",
     order: 4,
   },
 ];

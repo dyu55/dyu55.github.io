@@ -2,7 +2,7 @@
 title: "Building a Production RAG System"
 date: "2026-04-20"
 tags: ["RAG", "AI", "Production"]
-excerpt: "Lessons from building a RAG system that handles 10k+ queries per day with 140+ tests."
+excerpt: "Engineering notes on retrieval, source-grounded answers and testing a document question-answering system."
 coverImage: "/images/rag-architecture.png"
 ---
 
@@ -26,24 +26,24 @@ Grounding verification runs after every LLM response. It compares the generated 
 
 ## Testing at Scale
 
-We wrote 140+ tests covering:
+Useful areas for test coverage include:
 
 - Retrieval quality metrics
 - Grounding verification accuracy
 - Answer relevance scoring
 - Latency under load
 
-The test suite runs on every PR. It's caught regressions multiple times.
+Running these checks alongside code changes helps make regressions visible.
 
 ## Key Learnings
 
 <Callout type="tip" title="Chunking strategy">
-Chunking strategy matters more than embedding model choice. We went through 5 different chunking approaches before finding the right balance between context window utilization and retrieval precision.
+Chunking strategy matters more than embedding model choice. Compare chunking approaches against the documents and questions the system needs to handle.
 </Callout>
 
-1. **Chunking strategy matters more than embedding model choice** — spent weeks tuning embeddings, but the breakthrough came from chunking experiments
+1. **Chunking strategy matters more than embedding model choice** — evaluate how chunks preserve context as well as how embeddings retrieve them
 2. **Hybrid search (dense + sparse) outperforms either alone** — BM25 for keyword precision, dense vectors for semantic similarity
-3. **Reranking significantly improves final results** — cross-encoder reranking after initial retrieval boost MAP by 23%
+3. **Reranking significantly improves final results** — evaluate cross-encoder reranking against a retrieval baseline before claiming an improvement
 4. **Don't forget about metadata filtering** — filtering by date, document type, or source improves relevance when combined with semantic search
 
 The architecture that finally worked:
@@ -52,6 +52,6 @@ The architecture that finally worked:
 User Query → Rewrite → Retrieve (dense + sparse) → RRF Fusion → Rerank → LLM → Grounding Check → Response
 ```
 
-Each component has dedicated tests. The grounding check is the most important — it's caught 3 production incidents where the LLM was about to say something wrong.
+Each component needs dedicated tests. Grounding checks are particularly useful for identifying answers that are not supported by their sources.
 
 More details on the specific implementation in the RAG Assistant repo.

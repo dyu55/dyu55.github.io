@@ -3,23 +3,23 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navigation } from "@/components/nav/Navigation";
 
 export const metadata = {
-  title: "Michael Yu — AI Systems Engineer",
+  title: "Michael Yu — Software Engineer",
   description:
-    "AI Systems Engineer specializing in production AI systems, RAG pipelines, and agentic architectures. Building systems that work at scale.",
+    "Software engineer building native mobile apps, full-stack products and AI tools.",
   metadataBase: new URL("https://dyu55.github.io"),
   openGraph: {
-    title: "Michael Yu — AI Systems Engineer",
+    title: "Michael Yu — Software Engineer",
     description:
-      "AI Systems Engineer specializing in production AI systems, RAG pipelines, and agentic architectures.",
+      "Native mobile apps, full-stack products and AI tools by Michael Yu.",
     type: "website",
     url: "https://dyu55.github.io",
     siteName: "Michael Yu",
   },
   twitter: {
     card: "summary",
-    title: "Michael Yu — AI Systems Engineer",
+    title: "Michael Yu — Software Engineer",
     description:
-      "AI Systems Engineer specializing in production AI systems, RAG pipelines, and agentic architectures.",
+      "Native mobile apps, full-stack products and AI tools by Michael Yu.",
   },
 };
 
@@ -33,20 +33,28 @@ export default function RootLayout({
     "@type": "Person",
     name: "Michael Yu",
     url: "https://dyu55.github.io",
-    jobTitle: "AI Systems Engineer",
+    jobTitle: "Software Engineer",
     description:
-      "AI Systems Engineer specializing in production AI systems, RAG pipelines, and agentic architectures.",
+      "Native mobile apps, full-stack products and AI tools by Michael Yu.",
     sameAs: [
       "https://github.com/dyu55",
-      "https://linkedin.com/in/dyu55",
+      "https://www.linkedin.com/in/michael-yu-614181388",
     ],
   };
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#121218" media="(prefers-color-scheme: dark)" />
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+        <meta
+          name="theme-color"
+          content="#131612"
+          media="(prefers-color-scheme: dark)"
+        />
+        <meta
+          name="theme-color"
+          content="#fafbf8"
+          media="(prefers-color-scheme: light)"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -54,8 +62,11 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProvider>
+          <a className="skip-link" href="#main-content">
+            Skip to content
+          </a>
           <Navigation />
-          <main className="pt-16">{children}</main>
+          <main id="main-content">{children}</main>
         </ThemeProvider>
       </body>
     </html>
