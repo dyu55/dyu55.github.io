@@ -9,15 +9,13 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="work-section shell"
+      className="work-section projects-index shell"
       aria-labelledby="work-title"
     >
       <div className="section-heading">
         <div>
-          <p className="eyebrow">
-            <span className="section-number">01 /</span> Selected work
-          </p>
-          <h2 id="work-title">From idea to interaction.</h2>
+          <p className="eyebrow">Selected work</p>
+          <h1 id="work-title">Ideas, made real.</h1>
         </div>
         <p>
           A closer look at the products I build and the decisions behind them.

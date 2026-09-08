@@ -17,10 +17,10 @@ export const projects: Project[] = [
     title: "MyAgent",
     tagline: "Plan, execute and verify — with a record of every step",
     description:
-      "A local coding agent with a typed tool runtime, durable checkpoints and explicit test verification. Run Studio makes task progress, file changes and execution history inspectable.",
+      "A local coding agent with a typed tool runtime, durable checkpoints and explicit test verification. Execution Control makes task progress, file changes and execution history inspectable.",
     tags: ["Python", "FastAPI", "SQLite", "Pydantic", "pytest"],
     githubUrl: "https://github.com/dyu55/My-Agent",
-    coverImage: "/images/myagent/myagent-overview.png",
+    coverImage: "/images/myagent/myagent-overview.png?v=39c177d22bea",
     order: 1,
   },
   {
@@ -31,7 +31,7 @@ export const projects: Project[] = [
       "A local document workbench combining keyword, vector and graph retrieval with inspectable source passages. Import documents, ask questions and trace each answer back to its evidence.",
     tags: ["Python", "FastAPI", "SQLite", "BM25", "RAG"],
     githubUrl: "https://github.com/dyu55/RAG-assistant",
-    coverImage: "/images/rag-assistant/rag-answer.png",
+    coverImage: "/images/rag-assistant/rag-reading-room.png?v=b3fb8c538c28",
     order: 2,
   },
   {

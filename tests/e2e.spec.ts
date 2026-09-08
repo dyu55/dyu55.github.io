@@ -6,8 +6,10 @@ test.describe("Portfolio Smoke Tests", () => {
     await expect(page.locator("h1")).toBeVisible();
   });
 
-  test("projects section is visible", async ({ page }) => {
+  test("project gallery lives on its own page", async ({ page }) => {
     await page.goto("/");
+    await expect(page.locator("#projects")).toHaveCount(0);
+    await page.goto("/projects/");
     await expect(page.locator("#projects")).toBeVisible();
   });
 
@@ -25,13 +27,20 @@ test.describe("Portfolio Smoke Tests", () => {
   test("project detail page loads", async ({ page }) => {
     await page.goto("/projects/myagent");
     await page.waitForLoadState("networkidle");
-    await expect(page.getByRole("main").first()).toBeVisible({ timeout: 10000 });
+    await expect(page.getByRole("main").first()).toBeVisible({
+      timeout: 10000,
+    });
   });
 
   test("navigation works", async ({ page }) => {
     await page.goto("/");
-    await page.click('a[href="#projects"]');
-    await expect(page.locator("#projects")).toBeInViewport();
+    await page
+      .getByRole("link", { name: "Explore my projects", exact: true })
+      .click();
+    await expect(page).toHaveURL(/\/projects\/$/);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Ideas, made real." }),
+    ).toBeVisible();
   });
 
   test("dark mode toggle works", async ({ page }) => {
@@ -46,6 +55,8 @@ test.describe("Portfolio Smoke Tests", () => {
 
   test("404 page renders", async ({ page }) => {
     await page.goto("/this-page-does-not-exist");
-    await expect(page.getByRole("heading", { name: /404|not found/i })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /404|not found/i }),
+    ).toBeVisible();
   });
 });

@@ -8,7 +8,7 @@ export function HowIBuildSection() {
     >
       <div>
         <p className="eyebrow">
-          <span className="section-number">02 /</span> How I build
+          <span className="section-number">01 /</span> How I build
         </p>
         <h2 id="about-title">
           Care for the interface.

@@ -43,7 +43,7 @@ export default function ProjectPage({ params }: PageProps) {
   return (
     <>
       <article className="detail shell">
-        <Link href="/#projects" className="text-link">
+        <Link href="/projects/" className="text-link">
           <ArrowLeft size={17} /> Back to projects
         </Link>
         <header className="detail-header">

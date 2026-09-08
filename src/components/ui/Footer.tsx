@@ -7,6 +7,7 @@ export function Footer() {
         {new Date().getFullYear()}
       </p>
       <nav aria-label="Footer navigation">
+        <a href="/projects/">Projects</a>
         <a href="/blog/">Writing</a>
         <a href={profile.github} target="_blank" rel="noopener noreferrer">
           GitHub

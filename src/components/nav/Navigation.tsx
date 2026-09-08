@@ -1,14 +1,21 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 import { Menu, X, Sun, Moon } from "lucide-react";
 const links = [
-  { href: "/#projects", label: "Work" },
+  { href: "/", label: "Home" },
+  { href: "/projects/", label: "Projects" },
   { href: "/#capabilities", label: "About" },
   { href: "/blog/", label: "Writing" },
   { href: "/#contact", label: "Contact" },
 ];
 export function Navigation() {
+  const pathname = usePathname();
+  const isCurrent = (href: string) =>
+    href === "/"
+      ? pathname === "/"
+      : !href.includes("#") && pathname.startsWith(href.replace(/\/$/, ""));
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
@@ -39,7 +46,11 @@ export function Navigation() {
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           {links.map((l) => (
-            <a href={l.href} key={l.href}>
+            <a
+              href={l.href}
+              key={l.href}
+              aria-current={isCurrent(l.href) ? "page" : undefined}
+            >
               {l.label}
             </a>
           ))}
@@ -69,7 +80,12 @@ export function Navigation() {
           aria-label="Mobile navigation"
         >
           {links.map((l) => (
-            <a href={l.href} key={l.href} onClick={() => setOpen(false)}>
+            <a
+              href={l.href}
+              key={l.href}
+              onClick={() => setOpen(false)}
+              aria-current={isCurrent(l.href) ? "page" : undefined}
+            >
               {l.label}
             </a>
           ))}

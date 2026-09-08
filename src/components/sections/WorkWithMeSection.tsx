@@ -33,7 +33,7 @@ export function WorkWithMeSection() {
   return (
     <section className="contact-panel shell" id="contact">
       <div>
-        <p className="eyebrow">04 / Let’s connect</p>
+        <p className="eyebrow">03 / Let’s connect</p>
         <h2>
           Have something
           <br />

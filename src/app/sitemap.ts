@@ -1,42 +1,22 @@
-export default function sitemap() {
-  const baseUrl = "https://dyu55.github.io";
+import type { MetadataRoute } from "next";
+import { projects } from "@/data/projects";
+import { getAllPosts } from "@/lib/blog";
 
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://dyu55.github.io";
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/projects/myagent`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+    { url: `${baseUrl}/`, changeFrequency: "monthly", priority: 1 },
+    { url: `${baseUrl}/projects/`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/blog/`, changeFrequency: "weekly", priority: 0.8 },
+    ...projects.map((project) => ({
+      url: `${baseUrl}/projects/${project.slug}/`,
+      changeFrequency: "monthly" as const,
       priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/projects/rag-assistant`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/projects/budget-smart`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/projects/sneaker-store`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+    })),
+    ...getAllPosts().map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}/`,
+      lastModified: post.date,
+      priority: 0.6,
+    })),
   ];
 }

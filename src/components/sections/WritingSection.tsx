@@ -15,7 +15,7 @@ export function WritingSection({ posts }: { posts: BlogPostMeta[] }) {
       <div className="section-heading">
         <div>
           <p className="eyebrow">
-            <span className="section-number">03 /</span> Engineering notes
+            <span className="section-number">02 /</span> Engineering notes
           </p>
           <h2>Notes from the workbench.</h2>
         </div>
