@@ -10,35 +10,46 @@
 }
 @layer base {
   :root {
-    --color-background: #fafbf8;
+    --color-background: #f6f9fc;
     --color-surface: #fff;
-    --color-surface-elevated: #eef0eb;
-    --color-border: #d9ddd3;
-    --color-text: #182017;
-    --color-text-secondary: #51594e;
-    --color-muted: #64705d;
-    --color-muted-foreground: #596353;
-    --color-accent: #41651f;
+    --color-surface-elevated: #e8f0f7;
+    --color-border: #cbd8e4;
+    --color-text: #172d40;
+    --color-text-secondary: #4c6276;
+    --color-muted: #586e81;
+    --color-muted-foreground: #586e81;
+    --color-accent: #305f82;
     --color-accent-foreground: #fff;
-    --color-primary: #34521a;
+    --color-primary: #305f82;
     --color-primary-foreground: #fff;
-    --lime: #d4f78d;
+    --color-frost: #c5dced;
+    --color-frost-text: #172d40;
+    --color-frost-muted: #435b70;
+    --color-frost-border: #708ca4;
+    --color-signature: #783e4e;
+    --color-panel-input: #f6f9fc;
     --text-hero: clamp(3rem, 6vw, 5.7rem);
     --space-section: 7rem;
   }
   .dark {
-    --color-background: #131612;
-    --color-surface: #1c201a;
-    --color-surface-elevated: #262c23;
-    --color-border: #353d30;
-    --color-text: #f2f5ed;
-    --color-text-secondary: #bac2b2;
-    --color-muted: #a3ae98;
-    --color-muted-foreground: #a3ae98;
-    --color-accent: #d4f78d;
-    --color-accent-foreground: #19230d;
-    --color-primary: #d4f78d;
-    --color-primary-foreground: #182017;
+    --color-background: #101d2a;
+    --color-surface: #172a3b;
+    --color-surface-elevated: #20374b;
+    --color-border: #344d63;
+    --color-text: #edf4fa;
+    --color-text-secondary: #b7cadb;
+    --color-muted: #a6bdcf;
+    --color-muted-foreground: #a6bdcf;
+    --color-accent: #b4d4ec;
+    --color-accent-foreground: #172d40;
+    --color-primary: #b4d4ec;
+    --color-primary-foreground: #172d40;
+    --color-frost: #29485f;
+    --color-frost-text: #edf4fa;
+    --color-frost-muted: #c7dceb;
+    --color-frost-border: #86a4bb;
+    --color-signature: #e3afbd;
+    --color-panel-input: #172a3b;
   }
   html {
     scroll-behavior: smooth;
@@ -51,8 +62,8 @@
     -webkit-font-smoothing: antialiased;
   }
   ::selection {
-    background: #d4f78d;
-    color: #182017;
+    background: #c5dced;
+    color: #172d40;
   }
   *:focus-visible {
     outline: 2px solid var(--color-accent);
@@ -178,8 +189,8 @@
 }
 .hero-feature {
   display: block;
-  background: #dce7ca;
-  color: #273323;
+  background: var(--color-frost);
+  color: var(--color-frost-text);
   border-radius: 10px;
   padding: 24px 26px 25px;
   overflow: hidden;
@@ -195,8 +206,8 @@
 .hero-phone {
   width: 230px;
   margin: 22px auto 26px;
-  box-shadow: 0 26px 40px -18px #20371e55;
-  border: 5px solid #263125;
+  box-shadow: 0 26px 40px -18px #172d4055;
+  border: 5px solid #172d40;
   border-radius: 30px;
   overflow: hidden;
   transition: transform 0.5s;
@@ -266,7 +277,7 @@
   background: var(--color-surface);
 }
 .project-stage {
-  background: #e8ecdf;
+  background: var(--color-surface-elevated);
   padding: 42px 42px 0;
   display: flex;
   gap: 32px;
@@ -279,7 +290,7 @@
   width: min(28%, 240px);
   height: auto;
   border-radius: 24px 24px 0 0;
-  box-shadow: 0 15px 32px #24381c18;
+  box-shadow: 0 15px 32px #172d4018;
 }
 .project-stage img:nth-child(2) {
   margin-top: 42px;
@@ -417,8 +428,8 @@
   color: var(--color-accent);
 }
 .contact-panel {
-  background: var(--lime);
-  color: #1c2814;
+  background: var(--color-frost);
+  color: var(--color-frost-text);
   padding: 64px;
   border-radius: 10px;
   display: grid;
@@ -438,8 +449,8 @@
   max-width: 430px;
 }
 .contact-panel .button-primary {
-  background: #1c2814;
-  color: #f3f7ed;
+  background: #172d40;
+  color: #f6f9fc;
 }
 .contact-links {
   display: flex;
@@ -448,7 +459,7 @@
   flex-wrap: wrap;
 }
 .subscribe {
-  border-left: 1px solid #1c281433;
+  border-left: 1px solid var(--color-frost-border);
   padding-left: 50px;
   align-self: center;
 }
@@ -469,14 +480,14 @@
 .subscribe input {
   min-width: 0;
   width: 100%;
-  border: 1px solid #1c281444;
+  border: 1px solid var(--color-frost-border);
   border-radius: 5px;
   padding: 12px;
-  background: #ffffff80;
-  color: #1c2814;
+  background: var(--color-panel-input);
+  color: var(--color-frost-text);
 }
 .subscribe button {
-  background: #1c2814;
+  background: #172d40;
   color: #fff;
   padding: 12px 16px;
   border-radius: 5px;
@@ -855,7 +866,7 @@
   .subscribe {
     padding: 30px 0 0;
     border-left: 0;
-    border-top: 1px solid #1c281433;
+    border-top: 1px solid var(--color-frost-border);
   }
   .contact-panel h2 {
     font-size: 2.75rem;
@@ -1004,8 +1015,13 @@
   margin-top: 36px;
 }
 .home-introduction h1 span {
-  color: var(--color-accent);
+  color: var(--color-text);
   white-space: normal;
+  text-decoration: underline;
+  text-decoration-color: var(--color-frost);
+  text-decoration-thickness: 0.085em;
+  text-underline-offset: 0.13em;
+  text-decoration-skip-ink: none;
 }
 .home-signature {
   font-size: 1.125rem;
@@ -1014,8 +1030,11 @@
 }
 .home-summary {
   align-self: center;
-  padding-left: 40px;
-  border-left: 1px solid var(--color-border);
+  padding: 32px;
+  background: var(--color-frost);
+  color: var(--color-frost-text);
+  border: 1px solid var(--color-frost-border);
+  border-radius: 6px;
 }
 .home-summary-lead {
   font-size: clamp(1.5rem, 2.3vw, 2rem);
@@ -1024,7 +1043,7 @@
   margin: 24px 0 18px;
 }
 .home-summary > p:not(.eyebrow):not(.home-summary-lead) {
-  color: var(--color-text-secondary);
+  color: var(--color-frost-muted);
   line-height: 1.8;
   max-width: 420px;
 }
@@ -1095,10 +1114,8 @@
     font-size: clamp(3.2rem, 12vw, 5.5rem);
   }
   .home-summary {
-    border-left: 0;
-    padding: 36px 0 0;
+    padding: 28px 24px;
     margin-top: 36px;
-    border-top: 1px solid var(--color-border);
   }
   .home-summary-lead {
     font-size: 1.75rem;
@@ -1135,4 +1152,42 @@
 .workbench-cover img {
   height: 100%;
   object-fit: contain;
+}
+
+/* Michael Yu: Frost Blue, ink and a restrained wine-red signature. */
+.brand-mark {
+  color: var(--color-signature);
+  background: var(--color-frost);
+  border-color: var(--color-frost-border);
+}
+.home-introduction .eyebrow,
+.home-summary .eyebrow,
+.contact-panel > div > .eyebrow {
+  color: var(--color-signature);
+}
+.home-introduction .status-dot {
+  background: var(--color-signature);
+}
+.home-summary .button-primary,
+.contact-panel .button-primary,
+.subscribe button {
+  background: #172d40;
+  color: #f6f9fc;
+  border: 1px solid var(--color-frost-border);
+}
+.home-summary .button-primary:hover,
+.contact-panel .button-primary:hover,
+.subscribe button:hover {
+  background: #274a65;
+}
+.subscribe input::placeholder {
+  color: var(--color-muted-foreground);
+  opacity: 1;
+}
+.subscribe input {
+  color: var(--color-text);
+}
+.home-summary :focus-visible,
+.contact-panel :focus-visible {
+  outline-color: var(--color-frost-text);
 }
