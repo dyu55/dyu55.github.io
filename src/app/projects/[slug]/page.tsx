@@ -120,9 +120,16 @@ export default function ProjectPage({ params }: PageProps) {
                   </div>
                 </div>
                 <p className="gallery-note">{detail.screenNote}</p>
-                <div className="screen-grid">
+                <div
+                  className={`screen-grid ${detail.galleryLayout === "workbench" ? "screen-grid-workbench" : ""}`}
+                >
                   {detail.screens.map((s, i) => (
-                    <figure key={s.src}>
+                    <figure
+                      key={s.src}
+                      className={
+                        s.format === "mobile" ? "screen-mobile" : undefined
+                      }
+                    >
                       <a
                         href={s.src}
                         target="_blank"
@@ -132,9 +139,15 @@ export default function ProjectPage({ params }: PageProps) {
                         <Image
                           src={s.src}
                           alt={s.alt}
-                          width={1206}
-                          height={2622}
-                          sizes="(max-width: 760px) 44vw, 350px"
+                          width={s.width ?? 1206}
+                          height={s.height ?? 2622}
+                          sizes={
+                            detail.galleryLayout === "workbench"
+                              ? s.format === "mobile"
+                                ? "(max-width: 760px) 90vw, 340px"
+                                : "(max-width: 760px) 90vw, 1200px"
+                              : "(max-width: 760px) 44vw, 350px"
+                          }
                         />
                       </a>
                       <figcaption>

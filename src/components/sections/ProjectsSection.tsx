@@ -78,31 +78,45 @@ export function ProjectsSection() {
           </p>
           <ArrowUpRight size={22} />
         </Link>
-        <Link href="/projects/myagent/" className="project-row">
-          <span className="project-index">03</span>
-          <div>
-            <h3>MyAgent</h3>
-            <span className="project-category">AI tools · In development</span>
-          </div>
-          <p>
-            An open-source coding agent. A new version is currently in progress.
-          </p>
-          <ArrowUpRight size={22} />
-        </Link>
-        <Link href="/projects/rag-assistant/" className="project-row">
-          <span className="project-index">04</span>
-          <div>
-            <h3>RAG Assistant</h3>
-            <span className="project-category">
-              Knowledge retrieval · In development
-            </span>
-          </div>
-          <p>
-            A document question-answering assistant. A new version is currently
-            in progress.
-          </p>
-          <ArrowUpRight size={22} />
-        </Link>
+      </div>
+      <div className="workbench-projects">
+        {["myagent", "rag-assistant"].map((slug, index) => {
+          const project = projects.find((entry) => entry.slug === slug)!;
+          const detail = projectDetails[slug];
+          const cover = detail.screens![0];
+          return (
+            <article key={slug} className="workbench-project">
+              <Link
+                href={`/projects/${slug}/`}
+                className="workbench-cover"
+                aria-label={`Explore ${project.title}`}
+              >
+                <Image
+                  src={cover.src}
+                  alt={cover.alt}
+                  width={cover.width!}
+                  height={cover.height!}
+                  sizes="(max-width: 760px) 90vw, 600px"
+                />
+              </Link>
+              <div className="workbench-info">
+                <p className="eyebrow">
+                  {String(index + 3).padStart(2, "0")} · {detail.category}
+                </p>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="tag-list">
+                  {project.tags.slice(0, 4).map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+                <Link href={`/projects/${slug}/`} className="text-link">
+                  Explore the project <ArrowUpRight size={18} />
+                </Link>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

@@ -15,23 +15,23 @@ export const projects: Project[] = [
   {
     slug: "myagent",
     title: "MyAgent",
-    tagline: "An open-source coding agent",
+    tagline: "Plan, execute and verify — with a record of every step",
     description:
-      "An open-source coding agent. A new version is currently in progress.",
-    tags: [],
+      "A local coding agent with a typed tool runtime, durable checkpoints and explicit test verification. Run Studio makes task progress, file changes and execution history inspectable.",
+    tags: ["Python", "FastAPI", "SQLite", "Pydantic", "pytest"],
     githubUrl: "https://github.com/dyu55/My-Agent",
-    coverImage: "",
+    coverImage: "/images/myagent/myagent-overview.png",
     order: 1,
   },
   {
     slug: "rag-assistant",
     title: "RAG Assistant",
-    tagline: "A document question-answering assistant",
+    tagline: "Answers with a paper trail",
     description:
-      "A document question-answering assistant. A new version is currently in progress.",
-    tags: [],
+      "A local document workbench combining keyword, vector and graph retrieval with inspectable source passages. Import documents, ask questions and trace each answer back to its evidence.",
+    tags: ["Python", "FastAPI", "SQLite", "BM25", "RAG"],
     githubUrl: "https://github.com/dyu55/RAG-assistant",
-    coverImage: "",
+    coverImage: "/images/rag-assistant/rag-answer.png",
     order: 2,
   },
   {

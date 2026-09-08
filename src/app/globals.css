@@ -917,3 +917,75 @@
 .writing-row:hover h2 {
   color: var(--color-accent);
 }
+
+/* Real desktop captures retain their native proportions. */
+.workbench-projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 32px;
+}
+.workbench-project {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.workbench-cover {
+  display: block;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+}
+.workbench-cover img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s;
+}
+.workbench-cover:hover img {
+  transform: scale(1.015);
+}
+.workbench-info {
+  padding: 28px;
+}
+.workbench-info .eyebrow {
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+.workbench-info h3 {
+  font-size: 2rem;
+  font-weight: 550;
+  letter-spacing: -0.04em;
+  margin: 12px 0;
+}
+.workbench-info > p:not(.eyebrow) {
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+.workbench-info .text-link {
+  margin-top: 24px;
+}
+.screen-grid-workbench {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 48px;
+}
+.screen-grid-workbench figure {
+  width: 100%;
+}
+.screen-grid-workbench .screen-mobile {
+  max-width: 340px;
+  justify-self: center;
+}
+.screen-grid-workbench a {
+  border-radius: 10px;
+}
+@media (max-width: 760px) {
+  .workbench-projects {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .workbench-info {
+    padding: 24px;
+  }
+  .screen-grid-workbench {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
